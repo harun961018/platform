@@ -14,7 +14,7 @@ func Load(fileName string) (config Configuration, err error) {
 		m := map[string]interface{}{}
 		err = decoder.Decode(&m)
 		if err == nil {
-			// config = &DefaultConfig{configData: m}
+			config = &DefaultConfig{configData: m}
 		}
 	}
 	return
