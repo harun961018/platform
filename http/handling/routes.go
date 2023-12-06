@@ -29,6 +29,7 @@ func generateRoutes(entries ...HandlerEntry) []Route {
 	for _, entry := range entries {
 		handlerType := reflect.TypeOf(entry.Handler)
 		promotedMethods := getAnonymousFieldMethods(handlerType)
+
 		for i := 0; i < handlerType.NumMethod(); i++ {
 			method := handlerType.Method(i)
 			methodName := strings.ToUpper(method.Name)
@@ -52,6 +53,7 @@ func generateRoutes(entries ...HandlerEntry) []Route {
 	}
 	return routes
 }
+
 func matchesPromotedMethodName(method reflect.Method,
 	methods []reflect.Method) bool {
 	for _, m := range methods {
@@ -62,7 +64,7 @@ func matchesPromotedMethodName(method reflect.Method,
 	return false
 }
 
-func getAnonymousFieldMethods(target []reflect.Type) reflect.Method {
+func getAnonymousFieldMethods(target reflect.Type) []reflect.Method {
 	methods := []reflect.Method{}
 	for i := 0; i < target.NumField(); i++ {
 		field := target.Field(i)
