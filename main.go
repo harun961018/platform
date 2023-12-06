@@ -4,6 +4,7 @@ import (
 	// "fmt"
 	"platform/config"
 	"platform/logging"
+	"platform/placeholder"
 	"platform/services"
 )
 
@@ -27,13 +28,14 @@ func main() {
 	// services.GetService(&cfg)
 	// var logger logging.Logger
 	// services.GetService(&logger)
-	services.Call(writeMessage)
-	val := struct {
-		message string
-		logging.Logger
-	}{
-		message: "Hello from the struct",
-	}
-	services.Populate(&val)
-	val.Logger.Debug(val.message)
+	// services.Call(writeMessage)
+	// val := struct {
+	// 	message string
+	// 	logging.Logger
+	// }{
+	// 	message: "Hello from the struct",
+	// }
+	// services.Populate(&val)
+	// val.Logger.Debug(val.message)
+	placeholder.Start()
 }

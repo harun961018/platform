@@ -31,6 +31,7 @@ var contextReferenceType = reflect.TypeOf(contextReference).Elem()
 
 func resolveServiceFromValue(c context.Context, val reflect.Value) (err error) {
 	serviceType := val.Elem().Type()
+	// fmt.Println("asdfasdf", contextReferenceType)
 	if serviceType == contextReferenceType {
 		val.Elem().Set(reflect.ValueOf(c))
 	} else if binding, found := services[serviceType]; found {
